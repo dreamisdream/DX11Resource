@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros">
+    <DX9ROOT>../../</DX9ROOT>
+    <DX9PART3ROOT>$(VW_ROOT)ThirdParty</DX9PART3ROOT>
+    <PART3_DX_LIB>$(DX9PART3ROOT)/dxsdk/Lib/$(Platform)/</PART3_DX_LIB>
+    <PART3_DX_INCLUDE>$(DX9PART3ROOT)/dxsdk/Include/</PART3_DX_INCLUDE>
+    <DX9PJT_BIN>$(DX9ROOT)$(Configuration)/$(Platform)/</DX9PJT_BIN>
+    <DX9PJT_TEMP>$(DX9ROOT)$(Configuration)/$(Platform)/$(ProjectName)/</DX9PJT_TEMP>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OutDir>$(DXPJT9_BIN)</OutDir>
+    <IntDir>$(DXPJT9_TEMP)</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup />
+  <ItemGroup>
+    <BuildMacro Include="DX9ROOT">
+      <Value>$(DX9ROOT)</Value>
+    </BuildMacro>
+    <BuildMacro Include="DX9PART3ROOT">
+      <Value>$(DX9PART3ROOT)</Value>
+    </BuildMacro>
+    <BuildMacro Include="PART3_DX_LIB">
+      <Value>$(PART3_DX_LIB)</Value>
+    </BuildMacro>
+    <BuildMacro Include="PART3_DX_INCLUDE">
+      <Value>$(PART3_DX_INCLUDE)</Value>
+    </BuildMacro>
+    <BuildMacro Include="DX9PJT_BIN">
+      <Value>$(DX9PJT_BIN)</Value>
+    </BuildMacro>
+    <BuildMacro Include="DX9PJT_TEMP">
+      <Value>$(DX9PJT_TEMP)</Value>
+    </BuildMacro>
+  </ItemGroup>
+</Project>

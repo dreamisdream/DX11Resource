@@ -1,0 +1,58 @@
+//==============================================================
+// File: MultiTexture.txt
+// Desc: 使用顶点着色器实现光照效果
+//==============================================================
+// 全局变量
+texture Texture0;   // 第1层纹理
+texture Texture1;   // 第2层纹理
+texture Texture2;   // 第3层纹理
+
+sampler Sampler0 = sampler_state
+{   // 第1个采样器
+    Texture = <Texture0>;
+    MipFilter = LINEAR;
+    MinFilter = LINEAR;
+    MagFilter = LINEAR;
+};
+
+sampler Sampler1 = sampler_state
+{   // 第2个采样器
+    Texture = <Texture1>;
+    MipFilter = LINEAR;
+    MinFilter = LINEAR;
+    MagFilter = LINEAR;
+};
+
+sampler Sampler2 = sampler_state
+{   // 第3个采样器
+    Texture = <Texture2>;
+    MipFilter = LINEAR;
+    MinFilter = LINEAR;
+    MagFilter = LINEAR;
+};
+
+// 输入结构
+struct PS_INPUT
+{
+    float2 texCoord0 : TEXCOORD0;
+    float2 texCoord1 : TEXCOORD1;
+    float2 texCoord2 : TEXCOORD2;
+};
+
+// 输出结构
+struct PS_OUTPUT
+{
+    vector PixelColor : COLOR;
+};
+
+// 像素着色器的入口函数
+PS_OUTPUT ps_main(PS_INPUT input)
+{
+    PS_OUTPUT output  = (PS_OUTPUT)0;
+    output.PixelColor = tex2D(Sampler0, input.texCoord0) *
+                        tex2D(Sampler1, input.texCoord1) +
+                        tex2D(Sampler2, input.texCoord2);
+
+    output.PixelColor += 0.1f;
+    return output;
+}

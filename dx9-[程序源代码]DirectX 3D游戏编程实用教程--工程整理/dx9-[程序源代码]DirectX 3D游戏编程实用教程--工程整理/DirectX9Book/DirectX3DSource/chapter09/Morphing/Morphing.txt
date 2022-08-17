@@ -1,0 +1,50 @@
+//==============================================================
+// File: Morphing.txt
+// Desc: 实现渐变动画的顶点着色器
+//==============================================================
+// 全局变量
+matrix  matWorld;                   // 世界变换矩阵
+matrix  matWorldViewProj;           // 组合变换矩阵
+float   fTimeScalar;                // 时间比例
+float3  vecLightDir;                // 光照方向
+float4  MtrlsAmbient;               // 材质环境光颜色
+float4  MtrlsDiffuse;               // 材质漫反射颜色
+float4  LightDiffuse;               // 光源漫反射颜色
+
+// 顶点着色器输入结构
+struct VS_INPUT 
+{
+    float4 Position0 : POSITION;    // 源网格模型顶点的位置
+    float3 Normal0   : NORMAL;      // 法向量0
+    float4 Position1 : POSITION1;   // 目标网格模型顶点的位置
+    float3 Normal1   : NORMAL1;     // 法向量1
+};
+
+// 顶点着色器输出结构
+struct VS_OUTPUT
+{
+    vector Position : POSITION;     // 位置
+    vector Diffuse  : COLOR;        // 顶点颜色
+};
+
+// 顶点着色器入口函数
+VS_OUTPUT vs_main( VS_INPUT input )
+{
+    VS_OUTPUT output = (VS_OUTPUT)0;
+    
+    // 计算经过变换后的顶点位置
+    float4 Position  = input.Position0 * fTimeScalar + 
+                       input.Position1 * (1-fTimeScalar);
+    output.Position  = mul(Position, matWorldViewProj);
+
+    // 计算经过变换后的顶点法向量
+    float3 Normal    = input.Normal0 * fTimeScalar + 
+                       input.Normal1 * (1-fTimeScalar);
+    Normal = normalize(mul(Normal, matWorld));
+  
+    // 计算顶点颜色 
+    float3 DiffuseColor = LightDiffuse * saturate(dot(Normal, vecLightDir));
+    output.Diffuse.rgb  = DiffuseColor * MtrlsDiffuse + MtrlsAmbient;
+    output.Diffuse.a    = 1.0f;
+    return output;
+}

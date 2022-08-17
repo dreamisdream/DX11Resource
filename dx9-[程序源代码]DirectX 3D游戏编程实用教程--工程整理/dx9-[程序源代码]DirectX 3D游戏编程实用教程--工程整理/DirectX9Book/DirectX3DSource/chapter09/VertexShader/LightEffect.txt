@@ -1,0 +1,45 @@
+//==============================================================
+// File: LightEffect.txt
+// Desc: 使用顶点着色器实现光照效果
+//==============================================================
+
+// 全局变量
+extern matrix   matWorld;           // 世界变换矩阵
+extern matrix   matWorldViewProj;   // 组合变换矩阵
+extern float4   vecLightDir;        // 光照方向
+extern float4   mtrlAmbient;        // 材质环境光系数
+extern float4   mtrlDiffuse;        // 材质漫反射系数
+
+// 输入结构
+struct VS_INPUT 
+{
+   float4 Position : POSITION;      // 顶点位置
+   float4 Normal   : NORMAL;        // 顶点法向量
+};
+
+// 输出结构
+struct VS_OUTPUT
+{
+   float4 Position : POSITION;
+   float4 Diffuse  : COLOR;         // 顶点颜色
+};
+
+// 顶点着实器入口函数
+VS_OUTPUT vs_main( VS_INPUT input )
+{
+   // 顶点位置
+   VS_OUTPUT Out = (VS_OUTPUT) 0; 
+   Out.Position = mul(input.Position, matWorldViewProj);
+
+   // 顶点颜色
+   float4 LightDir  = normalize(vecLightDir);
+   float4 Normalize = normalize(mul(input.Normal, matWorld));
+   float4 colorDiffuse = {1.0f, 1.0f, 1.0f, 1.0f};
+   float4 colorAmbient = {0.5f, 0.5f, 0.5f, 1.0f}; 
+   Out.Diffuse = colorAmbient * mtrlAmbient + 
+      colorDiffuse * saturate(dot(LightDir, Normalize)) * mtrlDiffuse;
+   
+   return Out;
+}
+
+

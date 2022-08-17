@@ -1,0 +1,112 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 中文(中华人民共和国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DIALOG1 DIALOGEX 0, 0, 430, 230
+STYLE DS_SETFONT | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "客户端"
+FONT 9, "宋体", 400, 0, 0x0
+BEGIN
+    CONTROL         "",IDC_STATIC,"Static",SS_GRAYFRAME,7,7,416,216
+    LTEXT           "消息:",IDC_STATIC,15,15,24,8
+    LISTBOX         IDC_RECVMSG,15,26,260,154,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_HSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_SENDMSG,15,184,260,33,ES_MULTILINE | ES_AUTOHSCROLL | WS_DISABLED
+    PUSHBUTTON      "发送(&S)",IDC_SENDSESSION,288,204,50,14,WS_DISABLED
+    LTEXT           "IP地址:",IDC_STATIC,301,70,29,8
+    LTEXT           "玩家名称:",IDC_STATIC,295,32,37,8
+    EDITTEXT        IDC_PLAYERNAME,339,28,70,14,ES_AUTOHSCROLL
+    LTEXT           "连接密码:",IDC_STATIC,295,51,37,8
+    EDITTEXT        IDC_PASSWORD,339,48,70,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "加入会话(&J)",IDC_JOINSESSION,288,106,70,14
+    PUSHBUTTON      "断开(&C)",IDC_CLOSESESSION,365,106,44,14,WS_DISABLED
+    PUSHBUTTON      "退出(&Q)",IDC_QUIT,365,204,44,14
+    GROUPBOX        "连接信息(&L)",IDC_STATIC,282,15,134,110
+    LTEXT           "端口号:",IDC_STATIC,301,89,29,8
+    EDITTEXT        IDC_ADDRESS,339,67,70,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_PORT,339,86,70,14,ES_AUTOHSCROLL
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_DIALOG1, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 423
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 223
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#endif    // 中文(中华人民共和国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

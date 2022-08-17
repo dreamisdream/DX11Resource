@@ -1,0 +1,23 @@
+//==============================================================
+// File: Transform.txt
+// Desc: 矩阵变换
+//==============================================================
+
+// 全局变量
+float4x4 matWorldViewProj;
+
+// 输出结构
+struct VS_OUTPUT
+{
+    float4 Position : POSITION;
+    float4 Diffuse  : COLOR;
+};
+
+// 入口函数
+VS_OUTPUT vs_main(float4 Position: POSITION)
+{
+    VS_OUTPUT Out = (VS_OUTPUT) 0; 
+    Out.Position  = mul(Position, matWorldViewProj);
+    Out.Diffuse   = float4(0.8f, 0.8f, 0.8f, 1.0f);
+    return Out;
+}
